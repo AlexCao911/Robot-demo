@@ -1,0 +1,18 @@
+{
+  "name": "Robot Eyes",
+  "short_name": "Eyes",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#da291c",
+  "theme_color": "#da291c",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <title>Robot Eyes</title>
+    <meta name="theme-color" content="#da291c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Robot Eyes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    <link rel="stylesheet" href="./styles.css?v=47" />
+  </head>
+  <body>
+    <main class="stage" aria-label="Robot animated eyes">
+      <div class="bag-hat" aria-hidden="true">
+        <img class="bag-photo" src="./assets/bag-hat-photo.png?v=47" alt="" />
+        <div class="bag-body"></div>
+        <div class="bag-lip"></div>
+        <div class="bag-crease crease-left"></div>
+        <div class="bag-crease crease-right"></div>
+        <div class="paper-crinkle crinkle-a"></div>
+        <div class="paper-crinkle crinkle-b"></div>
+        <div class="paper-crinkle crinkle-c"></div>
+        <div class="paper-crinkle crinkle-d"></div>
+        <div class="paper-crinkle crinkle-e"></div>
+        <div class="paper-wrinkle wrinkle-a"></div>
+        <div class="paper-wrinkle wrinkle-b"></div>
+        <div class="paper-wrinkle wrinkle-c"></div>
+        <div class="paper-grain"></div>
+        <div class="paper-edge"></div>
+        <div class="edge-fiber fiber-a"></div>
+        <div class="edge-fiber fiber-b"></div>
+        <div class="edge-fiber fiber-c"></div>
+        <div class="edge-fiber fiber-d"></div>
+        <svg class="paper-fold-lines" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+          <path class="fold-shadow fold-heavy" d="M54 16 C42 30 61 44 49 59 C36 76 56 92 43 123" />
+          <path class="fold-light" d="M67 18 C57 33 74 46 62 61 C51 75 67 93 57 119" />
+          <path class="fold-shadow" d="M176 5 C161 27 190 39 174 58 C158 76 183 93 166 132" />
+          <path class="fold-light fold-broken" d="M194 11 C184 31 204 45 190 62 C180 75 196 92 186 119" />
+          <path class="fold-shadow fold-broken" d="M292 24 C273 37 304 51 286 66 C269 81 292 94 278 115" />
+          <path class="fold-light" d="M334 8 C323 25 345 37 331 51 C319 65 338 79 326 100" />
+          <path class="fold-shadow fold-heavy" d="M476 13 C460 30 484 49 468 66 C451 84 479 98 462 127" />
+          <path class="fold-light fold-broken" d="M495 17 C486 32 503 49 491 64 C482 78 500 93 488 119" />
+          <path class="fold-shadow" d="M686 10 C671 31 701 45 684 65 C668 84 693 99 678 130" />
+          <path class="fold-light" d="M709 18 C699 34 716 48 705 64 C694 81 710 94 701 119" />
+          <path class="fold-shadow fold-heavy" d="M916 8 C902 28 928 40 910 59 C892 79 922 95 904 131" />
+          <path class="fold-light fold-broken" d="M939 14 C929 30 946 43 934 59 C922 75 939 91 929 116" />
+          <path class="fold-shadow" d="M1102 18 C1088 33 1113 47 1098 63 C1083 80 1106 96 1094 122" />
+          <path class="fold-fine" d="M118 82 C178 71 227 93 286 78 C338 65 401 85 459 72" />
+          <path class="fold-fine fold-light" d="M542 54 C612 39 660 66 724 52 C791 37 836 60 902 48" />
+          <path class="fold-fine" d="M742 104 C812 90 870 111 935 97 C996 84 1045 101 1114 87" />
+          <path class="fold-shadow fold-short" d="M384 110 C409 96 435 117 461 101" />
+          <path class="fold-light fold-short" d="M1010 34 C1032 21 1055 41 1082 29" />
+        </svg>
+        <svg class="paper-bottom-folds" viewBox="0 0 1200 86" preserveAspectRatio="none" aria-hidden="true">
+          <path class="bottom-shadow-line bottom-main" transform="translate(0 10)" d="M0 35 C42 27 70 43 111 34 C157 24 187 42 229 32 C276 21 309 45 353 35 C398 25 432 44 478 31 C525 19 568 43 614 33 C664 21 704 44 750 33 C798 22 833 42 878 31 C923 20 964 45 1012 34 C1064 22 1111 43 1200 31" />
+          <path class="bottom-light-line" transform="translate(0 10)" d="M8 24 C55 18 88 31 132 24 C183 16 214 29 260 23 C309 16 342 30 389 23 C432 16 474 31 520 23 C572 15 604 31 650 24 C707 16 742 31 790 23 C842 16 879 31 929 24 C985 17 1022 30 1070 24 C1123 17 1152 29 1192 23" />
+          <path class="bottom-shadow-line bottom-broken" d="M68 39 C55 49 70 58 58 70" />
+          <path class="bottom-shadow-line bottom-broken" d="M148 31 C136 45 154 54 142 76" />
+          <path class="bottom-light-line bottom-broken" d="M202 33 C191 43 206 54 196 67" />
+          <path class="bottom-shadow-line bottom-broken" d="M318 35 C302 48 328 57 314 78" />
+          <path class="bottom-shadow-line bottom-broken" d="M454 29 C439 42 465 52 448 73" />
+          <path class="bottom-light-line bottom-broken" d="M542 36 C529 47 548 55 538 69" />
+          <path class="bottom-shadow-line bottom-broken" d="M672 30 C657 44 680 52 666 79" />
+          <path class="bottom-light-line bottom-broken" d="M778 35 C765 47 785 56 774 72" />
+          <path class="bottom-shadow-line bottom-broken" d="M900 28 C884 43 910 53 892 78" />
+          <path class="bottom-shadow-line bottom-broken" d="M1046 33 C1031 45 1055 55 1040 74" />
+          <path class="bottom-deep-crease" d="M16 48 C72 38 122 53 178 44 C232 36 284 52 345 43 C403 34 461 55 521 45 C585 35 642 54 704 44 C767 35 824 54 889 43 C946 35 1004 55 1070 44 C1125 36 1168 48 1200 41" />
+          <path class="bottom-roll-scratch" d="M82 18 C115 8 146 29 181 18" />
+          <path class="bottom-roll-scratch" d="M238 66 C271 55 308 73 344 60" />
+          <path class="bottom-roll-scratch" d="M392 21 C430 10 458 32 502 18" />
+          <path class="bottom-roll-scratch" d="M610 68 C651 54 684 75 724 61" />
+          <path class="bottom-roll-scratch" d="M785 20 C827 8 861 32 910 17" />
+          <path class="bottom-roll-scratch" d="M984 65 C1025 52 1065 75 1110 60" />
+          <path class="bottom-shadow-scratch" d="M22 79 C68 72 112 84 164 76" />
+          <path class="bottom-shadow-scratch" d="M192 82 C232 74 273 86 326 78" />
+          <path class="bottom-shadow-scratch" d="M362 76 C412 68 458 83 514 74" />
+          <path class="bottom-shadow-scratch" d="M548 82 C604 73 650 87 716 78" />
+          <path class="bottom-shadow-scratch" d="M756 75 C813 67 866 84 932 73" />
+          <path class="bottom-shadow-scratch" d="M976 82 C1036 72 1094 87 1174 76" />
+          <path class="bottom-shadow-scratch" d="M42 69 C87 62 132 75 181 67 C228 59 275 75 326 66" />
+          <path class="bottom-shadow-scratch" d="M368 68 C414 60 459 77 510 67 C561 58 613 75 670 65" />
+          <path class="bottom-shadow-scratch" d="M704 69 C754 60 803 76 861 66 C914 57 967 76 1024 66" />
+          <path class="bottom-shadow-scratch" d="M1038 70 C1087 62 1126 75 1190 65" />
+          <path class="bottom-shadow-tick" d="M74 67 L122 78 M288 71 L334 82 M452 67 L499 80 M673 69 L718 81 M842 66 L895 80 M1038 69 L1092 82" />
+          <path class="bottom-shadow-tick" d="M36 82 L91 75 M156 84 L205 77 M354 83 L407 76 M592 84 L640 76 M812 83 L864 75 M1112 84 L1168 76" />
+          <path class="bottom-grain-mark" d="M38 72 L86 63 M128 58 L174 68 M222 52 L263 61 M528 70 L576 60 M742 50 L801 61 M914 71 L972 61 M1080 51 L1142 64" />
+          <path class="bottom-lower-wrinkle" d="M0 82 C33 78 67 86 101 81 C139 76 170 86 208 80 C245 74 286 87 330 81 C371 75 408 86 451 80" />
+          <path class="bottom-lower-wrinkle" d="M462 83 C505 76 546 87 590 81 C633 75 674 86 719 80 C759 74 801 87 848 81" />
+          <path class="bottom-lower-wrinkle" d="M862 83 C904 76 945 87 990 81 C1034 75 1074 86 1123 80 C1152 76 1176 82 1200 79" />
+          <path class="bottom-lower-light" d="M23 85 C78 80 132 87 194 82 M249 84 C302 79 352 88 414 82 M516 85 C571 79 627 88 692 82 M766 85 C830 78 891 88 957 82 M1014 85 C1072 78 1134 87 1192 81" />
+          <path class="bottom-crumple-notch" d="M116 80 C107 84 119 86 111 88 M222 78 C212 82 227 85 217 88 M392 79 C381 83 399 86 388 89 M570 78 C558 83 577 85 564 89 M735 79 C722 83 742 86 730 89 M936 77 C923 82 944 85 931 89 M1088 78 C1075 82 1094 86 1082 89" />
+          <path class="bottom-lower-hairline" d="M12 76 C61 72 101 82 154 77 M188 85 C232 80 278 87 331 82 M365 76 C414 71 462 84 517 77 M558 85 C609 80 656 88 710 82" />
+          <path class="bottom-lower-hairline" d="M748 76 C803 71 854 84 914 77 M944 85 C1003 79 1064 88 1128 82 M1135 74 C1158 72 1178 75 1200 73" />
+          <path class="bottom-lower-dark" d="M54 84 C94 79 137 87 181 82 C228 76 270 88 318 82 C360 77 400 88 446 82" />
+          <path class="bottom-lower-dark" d="M486 84 C536 78 582 88 631 82 C681 76 728 88 780 82 C826 77 870 88 919 82" />
+          <path class="bottom-lower-dark" d="M953 84 C998 78 1046 88 1096 82 C1135 78 1168 84 1200 80" />
+          <path class="bottom-lower-cross" d="M73 78 L112 83 M168 76 L204 84 M282 77 L327 84 M430 76 L471 84 M612 77 L651 84 M701 76 L746 84 M884 77 L929 84 M990 76 L1038 84 M1147 76 L1190 83" />
+          <path class="bottom-fiber-line" d="M28 61 C90 54 144 66 205 58 C265 51 314 65 382 58" />
+          <path class="bottom-fiber-line" d="M484 63 C554 54 618 67 688 58 C748 51 812 65 881 58" />
+          <path class="bottom-fiber-line" d="M930 61 C1001 52 1076 66 1168 57" />
+        </svg>
+        <div class="bag-badge">
+          <svg class="mcd-logo" viewBox="0 0 120 100" role="img" aria-label="McDonald's logo">
+            <path d="M24 88C24 32 32 10 45 10C58 10 60 88 60 88" />
+            <path d="M60 88C60 88 62 10 75 10C88 10 96 32 96 88" />
+          </svg>
+        </div>
+      </div>
+      <section class="face" id="face" data-expression="neutral">
+        <div class="eye left-eye"></div>
+        <div class="eye right-eye"></div>
+        <div class="pixel-shades" aria-hidden="true">
+          <span class="shade-lens shade-left"></span>
+          <span class="shade-bridge"></span>
+          <span class="shade-lens shade-right"></span>
+        </div>
+      </section>
+
+      <div class="rotate-hint">请横屏查看</div>
+    </main>
+    <script src="./script.js?v=47"></script>
+  </body>
+</html>
