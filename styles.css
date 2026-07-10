@@ -1437,6 +1437,10 @@ body {
   filter: brightness(1.12) saturate(1.08);
 }
 
+.face[data-expression="vision"] .eye-pair {
+  z-index: 6;
+}
+
 .face[data-expression="thinking"] .left-eye {
   width: calc(var(--eye-size) * 0.9);
   height: calc(var(--eye-size) * 0.9);
