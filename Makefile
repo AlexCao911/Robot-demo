@@ -13,7 +13,7 @@ start:
 		if [ -n "$(LAN_IP)" ]; then echo "Phone URL: http://$(LAN_IP):$(PORT)"; else echo "Phone URL: could not detect LAN IP. Try: make status LAN_IFACE=en1"; fi; \
 		echo "Mac URL: http://127.0.0.1:$(PORT)"; \
 	else \
-		python3 -m http.server "$(PORT)" --bind "$(HOST)" >/tmp/robot-eye-server.log 2>&1 & \
+		nohup python3 -m http.server "$(PORT)" --bind "$(HOST)" </dev/null >/tmp/robot-eye-server.log 2>&1 & \
 		echo $$! > "$(PID_FILE)"; \
 		sleep 0.2; \
 		if kill -0 "$$(cat $(PID_FILE))" 2>/dev/null; then \

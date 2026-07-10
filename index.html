@@ -12,7 +12,7 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon.svg" />
-    <link rel="stylesheet" href="./styles.css?v=47" />
+    <link rel="stylesheet" href="./styles.css?v=53" />
   </head>
   <body>
     <main class="stage" aria-label="Robot animated eyes">
@@ -112,17 +112,27 @@
         </div>
       </div>
       <section class="face" id="face" data-expression="neutral">
-        <div class="eye left-eye"></div>
-        <div class="eye right-eye"></div>
-        <div class="pixel-shades" aria-hidden="true">
-          <span class="shade-lens shade-left"></span>
-          <span class="shade-bridge"></span>
-          <span class="shade-lens shade-right"></span>
+        <div class="reaction-layer">
+          <div class="performance-layer">
+            <div class="eye-pair">
+              <div class="eye-slot left-slot">
+                <div class="eye left-eye"></div>
+              </div>
+              <div class="eye-slot right-slot">
+                <div class="eye right-eye"></div>
+              </div>
+            </div>
+            <div class="pixel-shades" aria-hidden="true">
+              <span class="shade-lens shade-left"></span>
+              <span class="shade-bridge"></span>
+              <span class="shade-lens shade-right"></span>
+            </div>
+          </div>
         </div>
       </section>
 
       <div class="rotate-hint">请横屏查看</div>
     </main>
-    <script src="./script.js?v=47"></script>
+    <script src="./script.js?v=53"></script>
   </body>
 </html>
