@@ -26,6 +26,7 @@ const expressions = [
   "thinking",
   "angry",
   "cool",
+  "vision",
 ];
 
 const expressionTiming = {
@@ -53,6 +54,7 @@ const expressionTiming = {
   thinking: [3400, 4800],
   angry: [2800, 4000],
   cool: [6000, 6800],
+  vision: [5800, 6800],
 };
 
 const expressionPool = [
@@ -86,6 +88,10 @@ const expressionPool = [
   "thinking",
   "angry",
   "cool",
+  "cool",
+  "cool",
+  "cool",
+  "vision",
 ];
 const gazePoints = [
   [0, 0],
@@ -137,6 +143,16 @@ let blinkLockUntil = 0;
 let expressionCueTimers = [];
 let reactionTimer = null;
 let lastTapReaction = "";
+let tapIntensityLevel = 0;
+let lastIntensityTapAt = -Infinity;
+
+const tapIntensityStages = ["pleased", "delighted", "bashful", "ticklish"];
+const intensityExpressions = {
+  pleased: ["happy", "relieved"],
+  delighted: ["delighted", "giggle"],
+  bashful: ["shy", "adoring"],
+  ticklish: ["playful", "oops"],
+};
 
 function clearExpressionCues() {
   expressionCueTimers.forEach((timer) => window.clearTimeout(timer));
@@ -193,6 +209,53 @@ function chooseTapReaction(candidates, randomValue = Math.random()) {
   const nonRepeating = candidates.filter((reaction) => reaction !== lastTapReaction);
   const pool = nonRepeating.length > 0 ? nonRepeating : candidates;
   return pool[Math.floor(randomValue * pool.length)];
+}
+
+function chooseTapIntensity(now = Date.now()) {
+  if (now - lastIntensityTapAt > 1200) {
+    tapIntensityLevel = 0;
+  } else {
+    tapIntensityLevel = Math.min(tapIntensityLevel + 1, tapIntensityStages.length - 1);
+  }
+  lastIntensityTapAt = now;
+  return tapIntensityStages[tapIntensityLevel];
+}
+
+function resetTapIntensity() {
+  tapIntensityLevel = 0;
+  lastIntensityTapAt = -Infinity;
+}
+
+function triggerIntensityReaction(stage) {
+  if (!tapIntensityStages.includes(stage)) {
+    return;
+  }
+
+  window.clearTimeout(reactionTimer);
+  face.dataset.reaction = "";
+  void face.offsetWidth;
+  face.dataset.reaction = stage;
+
+  const matchingExpressions = intensityExpressions[stage];
+  setExpression(matchingExpressions[Math.floor(Math.random() * matchingExpressions.length)]);
+
+  if (stage === "pleased") {
+    blink(145);
+  } else if (stage === "delighted") {
+    window.setTimeout(() => blink(130), 280);
+  } else if (stage === "bashful") {
+    window.setTimeout(() => blink(240), 360);
+  } else if (stage === "ticklish") {
+    window.setTimeout(() => blink(115), 170);
+    window.setTimeout(() => blink(125), 470);
+  }
+
+  const duration = stage === "ticklish" ? 1150 : stage === "bashful" ? 980 : 780;
+  reactionTimer = window.setTimeout(() => {
+    if (face.dataset.reaction === stage) {
+      face.dataset.reaction = "";
+    }
+  }, duration);
 }
 
 function isMobileInteraction(event) {
@@ -340,11 +403,7 @@ window.addEventListener("pointermove", (event) => {
 
 window.addEventListener("pointerdown", (event) => {
   if (isMobileInteraction(event)) {
-    const towardTap = event.clientX < window.innerWidth / 2 ? "nuzzle-left" : "nuzzle-right";
-    const availableReactions = tapReactions.filter((reaction) => !reaction.startsWith("nuzzle"));
-    availableReactions.push(towardTap);
-    const reaction = chooseTapReaction(availableReactions);
-    triggerTapReaction(reaction);
+    triggerIntensityReaction(chooseTapIntensity());
   } else {
     setExpression(expressionIndex + 1);
     blink(240);
@@ -382,11 +441,15 @@ window.robotEyes = {
   blink,
   blinkOne,
   chooseTapReaction,
+  chooseTapIntensity,
+  expressionPool: [...expressionPool],
   expressions: [...expressions],
   setExpression,
   setLook,
   isMobileInteraction,
   tapReactions: [...tapReactions],
+  resetTapIntensity,
+  triggerIntensityReaction,
   triggerTapReaction,
 };
 

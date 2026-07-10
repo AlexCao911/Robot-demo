@@ -62,6 +62,7 @@ test("cute expression set replaces technology-focused states", () => {
       "thinking",
       "angry",
       "cool",
+      "vision",
     ],
   );
   assert.equal(robotEyes.expressions.includes("scan"), false);
@@ -87,7 +88,7 @@ test("numeric expression navigation wraps in both directions", () => {
   const { face, robotEyes } = loadRobotEyes();
 
   robotEyes.setExpression(-1);
-  assert.equal(face.dataset.expression, "cool");
+  assert.equal(face.dataset.expression, "vision");
   robotEyes.setExpression(robotEyes.expressions.length);
   assert.equal(face.dataset.expression, "neutral");
 });
@@ -126,4 +127,27 @@ test("consecutive taps avoid repeating the same reaction", () => {
 
   robotEyes.triggerTapReaction("boop");
   assert.equal(robotEyes.chooseTapReaction(["boop", "bounce"], 0), "bounce");
+});
+
+test("sunglasses have four times the ambient expression weight", () => {
+  const { robotEyes } = loadRobotEyes();
+
+  assert.equal(robotEyes.expressionPool.filter((expression) => expression === "cool").length, 4);
+});
+
+test("Vision Pro expression can be selected directly", () => {
+  const { face, robotEyes } = loadRobotEyes();
+
+  robotEyes.setExpression("vision");
+  assert.equal(face.dataset.expression, "vision");
+});
+
+test("tap intensity escalates through four emotional stages and resets after a pause", () => {
+  const { robotEyes } = loadRobotEyes();
+
+  assert.equal(robotEyes.chooseTapIntensity(1000), "pleased");
+  assert.equal(robotEyes.chooseTapIntensity(1250), "delighted");
+  assert.equal(robotEyes.chooseTapIntensity(1500), "bashful");
+  assert.equal(robotEyes.chooseTapIntensity(1750), "ticklish");
+  assert.equal(robotEyes.chooseTapIntensity(3200), "pleased");
 });

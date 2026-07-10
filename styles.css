@@ -834,6 +834,26 @@ body {
   animation: reaction-nuzzle-right 820ms cubic-bezier(.16,.84,.22,1);
 }
 
+.face[data-reaction="pleased"] .reaction-layer {
+  animation: reaction-pleased 780ms cubic-bezier(.16,.88,.22,1);
+}
+
+.face[data-reaction="delighted"] .reaction-layer {
+  animation: reaction-delighted 780ms cubic-bezier(.16,.9,.2,1);
+}
+
+.face[data-reaction="bashful"] .reaction-layer {
+  animation: reaction-intense-bashful 980ms cubic-bezier(.2,.78,.22,1);
+}
+
+.face[data-reaction="ticklish"] .reaction-layer {
+  animation: reaction-ticklish 1150ms cubic-bezier(.2,.8,.2,1);
+}
+
+.face[data-reaction="ticklish"] .eye {
+  animation: ticklish-cover 1150ms cubic-bezier(.2,.8,.2,1);
+}
+
 .eye-pair {
   position: relative;
   display: grid;
@@ -998,6 +1018,99 @@ body {
     inset 0 4px 0 rgba(255, 255, 255, 0.06),
     0 5px 0 rgba(0, 0, 0, 0.4);
   image-rendering: pixelated;
+}
+
+.vision-pro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  width: clamp(680px, 91vw, 1280px);
+  height: clamp(270px, 42vw, 510px);
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 20px 24px rgba(55, 0, 0, 0.42));
+  transform: translate(-50%, -62%) scale(0.9) rotate(-1deg);
+  transform-origin: center;
+}
+
+.vision-frame {
+  position: absolute;
+  inset: 0 8%;
+  display: block;
+  padding: clamp(13px, 1.8vw, 26px);
+  border-radius: 44% 44% 40% 40% / 47% 47% 39% 39%;
+  background:
+    repeating-linear-gradient(112deg, rgba(255,255,255,.24) 0 2px, rgba(118,118,122,.12) 2px 4px),
+    linear-gradient(180deg, #e2e1e3 0%, #98989d 48%, #d5d4d7 100%);
+  box-shadow:
+    0 0 0 clamp(3px, .45vw, 7px) rgba(70,70,74,.72),
+    inset 0 3px 8px rgba(255,255,255,.8),
+    inset 0 -5px 10px rgba(42,42,46,.42);
+}
+
+.vision-visor {
+  position: absolute;
+  inset: clamp(20px, 2.7vw, 38px);
+  display: block;
+  overflow: hidden;
+  border: clamp(5px, .7vw, 10px) solid rgba(29, 28, 27, .9);
+  border-radius: 43% 43% 39% 39% / 45% 45% 38% 38%;
+  background:
+    radial-gradient(ellipse at 50% 115%, rgba(108,62,18,.45), transparent 39%),
+    linear-gradient(180deg, rgba(22,20,17,.94), rgba(7,7,7,.78) 62%, rgba(26,18,11,.9));
+  box-shadow:
+    inset 0 8px 18px rgba(255,255,255,.13),
+    inset 0 -8px 20px rgba(0,0,0,.8),
+    0 0 0 2px rgba(255,255,255,.18);
+  backdrop-filter: brightness(.78) saturate(.82);
+}
+
+.vision-highlight {
+  position: absolute;
+  top: 13%;
+  left: 24%;
+  width: 52%;
+  height: 17%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.18));
+  filter: blur(clamp(2px, .3vw, 5px));
+  transform: rotate(-1deg);
+}
+
+.vision-nose {
+  position: absolute;
+  left: 50%;
+  bottom: -1%;
+  width: 18%;
+  height: 23%;
+  border-radius: 50% 50% 18% 18%;
+  background: var(--bg);
+  box-shadow: 0 -4px 8px rgba(0,0,0,.72);
+  transform: translateX(-50%);
+}
+
+.vision-strap {
+  position: absolute;
+  top: 35%;
+  z-index: -1;
+  width: 16%;
+  height: 31%;
+  border: clamp(5px, .8vw, 12px) solid #aaa9ad;
+  background: linear-gradient(180deg, #e3e2e4, #8e8d91 60%, #d0cfd2);
+  box-shadow: inset 0 3px 6px rgba(255,255,255,.62), 0 7px 10px rgba(42,0,0,.28);
+}
+
+.vision-strap-left {
+  left: 0;
+  border-radius: 45% 18% 18% 45%;
+  transform: rotate(4deg);
+}
+
+.vision-strap-right {
+  right: 0;
+  border-radius: 18% 45% 45% 18%;
+  transform: rotate(-4deg);
 }
 
 .face[data-expression="happy"] {
@@ -1308,6 +1421,21 @@ body {
 
 .face[data-expression="cool"] .eye {
   filter: brightness(0.92);
+}
+
+.face[data-expression="vision"] {
+  --eye-h: calc(var(--eye-size) * 0.88);
+  --eye-radius: clamp(24px, 5vmin, 46px);
+  --glow: 0.92;
+}
+
+.face[data-expression="vision"] .vision-pro {
+  opacity: 1;
+  animation: vision-pro-arrival 6.8s cubic-bezier(.18,.88,.2,1) both;
+}
+
+.face[data-expression="vision"] .eye {
+  filter: brightness(1.12) saturate(1.08);
 }
 
 .face[data-expression="thinking"] .left-eye {
@@ -1760,6 +1888,48 @@ body {
     opacity: 1;
     transform: translate(-50%, -48%) scale(1);
   }
+}
+
+@keyframes reaction-pleased {
+  0%, 100% { transform: translateY(0) scale(1); }
+  34% { transform: translateY(-8px) scale(1.025); }
+  58% { transform: translateY(2px) scale(.995); }
+}
+
+@keyframes reaction-delighted {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  22% { transform: translateY(-15px) rotate(-1.2deg); }
+  47% { transform: translateY(3px) rotate(1deg); }
+  70% { transform: translateY(-8px) rotate(-.5deg); }
+}
+
+@keyframes reaction-intense-bashful {
+  0%, 100% { transform: translateY(0) scale(1); }
+  34%, 72% { transform: translateY(16px) scale(.94); }
+  52% { transform: translateY(12px) scale(.96) rotate(-1.5deg); }
+}
+
+@keyframes reaction-ticklish {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0); }
+  14% { transform: translateX(-22px) translateY(8px) rotate(-3deg); }
+  29% { transform: translateX(24px) translateY(13px) rotate(3deg); }
+  45% { transform: translateX(-18px) translateY(18px) rotate(-2deg); }
+  62% { transform: translateX(17px) translateY(12px) rotate(2deg); }
+  80% { transform: translateX(-7px) translateY(5px) rotate(-.8deg); }
+}
+
+@keyframes ticklish-cover {
+  0%, 12%, 82%, 100% { transform: scaleY(1); }
+  24%, 68% { transform: scaleY(.34) translateY(18%); }
+  43% { transform: scaleY(.56) translateY(10%); }
+}
+
+@keyframes vision-pro-arrival {
+  0% { opacity: 0; transform: translate(-50%, -88%) scale(.88) rotate(-1.5deg); }
+  9% { opacity: 1; transform: translate(-50%, -43%) scale(1.025) rotate(.5deg); }
+  16% { transform: translate(-50%, -48%) scale(1) rotate(0); }
+  32%, 72% { transform: translate(-50%, -50%) scale(1) rotate(-.35deg); }
+  52%, 88%, 100% { opacity: 1; transform: translate(-50%, -48%) scale(1) rotate(.35deg); }
 }
 
 @keyframes hat-subtle-shiver {
