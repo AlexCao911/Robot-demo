@@ -26,7 +26,6 @@ const expressions = [
   "thinking",
   "angry",
   "cool",
-  "vision",
 ];
 
 const expressionTiming = {
@@ -54,7 +53,6 @@ const expressionTiming = {
   thinking: [3400, 4800],
   angry: [2800, 4000],
   cool: [6000, 6800],
-  vision: [5800, 6800],
 };
 
 const expressionPool = [
@@ -91,7 +89,6 @@ const expressionPool = [
   "cool",
   "cool",
   "cool",
-  "vision",
 ];
 const gazePoints = [
   [0, 0],
